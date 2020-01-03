@@ -15,7 +15,7 @@
 
 #include "WaveGene.h"
 
-struct SwitchState ss = {0, 0, {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000},  {0, 1, 2}};
+struct SwitchState ss = {0, 0, {100,500,1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000},  {0, 1, 2, 3, 4}};
 
 void switch_int ( ) {
 	if (EZDSP5535_SAR_init()) {
@@ -55,6 +55,7 @@ Int16 switch_test( )
 }
 
 void change_wave_freq() {
+
 	if (ss.freq_idx < FREQ_SIZE) {
 		wave.Freq = ss.freq_flag[ss.freq_idx];
 		ss.freq_idx ++;
@@ -64,8 +65,10 @@ void change_wave_freq() {
 		wave.Freq = ss.freq_flag[ss.freq_idx];
 		ss.freq_idx ++;
 	}
+	printf("Wave Frequency is  %d HZ\n",wave.Freq);//DGF add
 }
 void change_wave_form() {
+
 	if (ss.form_idx < FORM_SIZE) {
 		wave.type = ss.form_flag[ss.form_idx];
 		ss.form_idx ++;
@@ -75,4 +78,5 @@ void change_wave_form() {
 		wave.type = ss.form_flag[ss.form_idx];
 		ss.form_idx ++;
 	}
+	//printf(" Generating %s wave \n",wave.type);//DGF add 这李打印怎么格式化
 }

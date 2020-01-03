@@ -27,25 +27,29 @@ struct WAVE
  volatile enum {
   SIN = 0,
   SQUARE,
-  TRI
+  TRI,
+  ANG,
+  BPSK
  } type;
 };
+
+
+
+
 extern struct WAVE wave;
 
 /*********************************** XW ***********************************/
 /*
-void TabelSearch(struct WAVE* pwave, int phase);
-void WaveGenerate(struct WAVE* pwave);
 */
 
 #define FREQ_SIZE 12
-#define FORM_SIZE 3
+#define FORM_SIZE 5
 
 struct SwitchState {
 	volatile Uint32 freq_idx;
 	volatile Uint32 form_idx;
 	volatile Uint32 freq_flag[FREQ_SIZE];
-	volatile int form_flag[FORM_SIZE];
+	volatile Uint32 form_flag[FORM_SIZE];
 };
 //
 extern struct SwitchState ss;
